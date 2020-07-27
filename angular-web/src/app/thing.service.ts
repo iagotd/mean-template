@@ -4,9 +4,9 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ThingService {
 
-  private _eventsUrl = "http://localhost:3000/api/events";
-  private _premiumUrl = "http://localhost:3000/api/premium";
-  private _adminUrl = "http://localhost:3000/api/admin";
+  private _eventsUrl = "https://localhost:8443/api/events";
+  private _premiumUrl = "https://localhost:8443/api/premium";
+  private _adminUrl = "https://localhost:8443/api/admin";
 
   constructor(private http: HttpClient) { }
 
