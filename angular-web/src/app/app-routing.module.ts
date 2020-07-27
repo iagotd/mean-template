@@ -15,46 +15,16 @@ import { ControlGuard } from './control.guard';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'data',
-    component: DataComponent,
-    canActivate: [DataGuard]
-  },
-  {
-    path: 'control',
-    component: ControlComponent,
-    canActivate: [ControlGuard]
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'confirm',
-    component: ConfirmComponent
-  }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'data', component: DataComponent, canActivate: [DataGuard] },
+  { path: 'control', component: ControlComponent, canActivate: [ControlGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'confirm/:email/:token', component: ConfirmComponent },
+  { path: 'confirm', component: ConfirmComponent },
 ];
 
 @NgModule({
