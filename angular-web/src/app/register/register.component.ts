@@ -21,12 +21,10 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => { 
           console.log(res),
-          localStorage.setItem('token', res.token)
-          localStorage.setItem('userType', res.userType)
-          this._router.navigate(['/home'])
+          localStorage.setItem('justRegistered', "true")
+          this._router.navigate(['/confirm'])
         },
         err => console.log(err)
       )
   }
-
 }
