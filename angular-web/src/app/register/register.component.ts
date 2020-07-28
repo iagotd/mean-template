@@ -24,7 +24,10 @@ export class RegisterComponent implements OnInit {
           localStorage.setItem('justRegistered', "true")
           this._router.navigate(['/confirm'])
         },
-        err => console.log(err)
+        err => {
+          console.log("An error has occured: " + err.error);
+          alert("An error has occured: " + err.error);
+        }
       )
   }
 }

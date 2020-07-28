@@ -36,8 +36,10 @@ export class ConfirmComponent implements OnInit {
 
     if(justConf === "true") {
       this.confirmText = "Account activated. Please, login to use our services.";
+      alert("Account activated. Please, login to use our services.");
     } else if (justReg === "true") {
-      this.confirmText = "Email sent. Please, activate your account to use our services";
+      this.confirmText = "Email sent. Please, activate your account to use our services.";
+      alert("Email sent. Please, activate your account to use our services.");
     } else {
       this._router.navigate(['/home'])
     }

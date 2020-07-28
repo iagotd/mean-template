@@ -23,9 +23,12 @@ export class LoginComponent implements OnInit {
           console.log(res),
           localStorage.setItem('token', res.token)
           localStorage.setItem('userType', res.userType)
-          this._router.navigate(['/home'])
+          this._router.navigate(['/profile'])
         },
-        err => console.log(err)
+        err => { 
+          console.log("An error has occured: " + err.error);
+          alert("An error has occured: " + err.error);
+        }
       )
   }
 
