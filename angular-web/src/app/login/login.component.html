@@ -9,7 +9,7 @@
             <h3 class="mb-0">Login</h3>
           </div>
           <div class="card-body">
-            <form class="form">
+            <form class="form" (keydown.enter)="loginUser()">
               <div class="form-group">
                 <label for="">Email</label>
                 <input type="text" [(ngModel)]="loginUserData.email" name="email" class="form-control rounded-0" required>
