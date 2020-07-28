@@ -21,7 +21,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => { 
           console.log(res),
-          localStorage.setItem('justRegistered', "true")
           this._router.navigate(['/confirm'])
         },
         err => {

@@ -9,7 +9,6 @@ import { AuthService } from '../auth.service';
 })
 export class ConfirmComponent implements OnInit {
 
-  confirmText = "An unexpected error has occurred.";
   confirmData = {email: '', token: ''};
   constructor(private _route: ActivatedRoute,
               private _auth: AuthService,
@@ -24,24 +23,10 @@ export class ConfirmComponent implements OnInit {
       this._auth.confirmUser(this.confirmData)
       .subscribe(
         res => { 
-          localStorage.setItem('justConfirmed', "true")
-          this._router.navigate(['/confirm'])
+          this._router.navigate(['/welcome'])
         },
         err => console.log(err)
       );
-    }
-
-    let justReg = localStorage.getItem("justRegistered");
-    let justConf = localStorage.getItem("justConfirmed");
-
-    if(justConf === "true") {
-      this.confirmText = "Account activated. Please, login to use our services.";
-      alert("Account activated. Please, login to use our services.");
-    } else if (justReg === "true") {
-      this.confirmText = "Email sent. Please, activate your account to use our services.";
-      alert("Email sent. Please, activate your account to use our services.");
-    } else {
-      this._router.navigate(['/home'])
     }
   }
 }
