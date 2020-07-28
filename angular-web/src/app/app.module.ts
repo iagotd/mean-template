@@ -18,6 +18,8 @@ import { DataGuard } from './data.guard';
 import { ControlGuard } from './control.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ProfileComponent } from './profile/profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ProfileComponent } from './profile/profile.component';
     ConfirmComponent,
     DataComponent,
     ControlComponent,
-    ProfileComponent
+    ProfileComponent,
+    NotFoundComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

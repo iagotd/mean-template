@@ -9,10 +9,11 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { DataComponent } from './data/data.component';
 import { ControlComponent } from './control/control.component'
 import { ProfileComponent } from './profile/profile.component'
+import { WelcomeComponent } from './welcome/welcome.component'
+import { NotFoundComponent } from './not-found/not-found.component'
 import { AuthGuard } from './auth.guard';
 import { DataGuard } from './data.guard';
 import { ControlGuard } from './control.guard';
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,6 +26,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'confirm/:email/:token', component: ConfirmComponent },
   { path: 'confirm', component: ConfirmComponent },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: 'welcome', component: WelcomeComponent },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
