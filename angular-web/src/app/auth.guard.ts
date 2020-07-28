@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from './auth.service';
+import { of, Observable } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -8,13 +10,26 @@ export class AuthGuard implements CanActivate {
   constructor (private _authService: AuthService,
                private _router: Router) {}
 
-  canActivate(): boolean {
-    if(this._authService.userLoggedIn()) {
-      return true
-    } else {
-      this._router.navigate(['/login'])
-      return false
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+
+    if (!localStorage.getItem("token") || !localStorage.getItem("userType")) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userType");
+      this._router.navigate(["/login"]);
+      return false;
     }
+
+    return this._authService.verifyToken().pipe(
+      catchError(err => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userType");
+        this._router.navigate(['/login']);
+        return of(false);
+      })
+    );
   }
-  
+
 }
