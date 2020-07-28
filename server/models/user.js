@@ -6,7 +6,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    password: {
+    hash: {
         type: String,
         required: true
     },
@@ -17,6 +17,10 @@ const userSchema = new Schema({
           validator : Number.isInteger,
           message   : '{VALUE} is not an integer value'
         }
+    },
+    emailConfirmed: {
+        type     : Boolean,
+        required : true,
     }
 })
 
