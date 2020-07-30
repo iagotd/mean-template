@@ -6,10 +6,12 @@ var config = require('../config.json');
 var verifyTemplate = fs.readFileSync('./views/verifyTemplate.hjs', 'utf-8');
 var welcomeTemplate = fs.readFileSync('./views/welcomeTemplate.hjs', 'utf-8');
 var resetTemplate = fs.readFileSync('./views/resetTemplate.hjs', 'utf-8');
+var deleteTemplate = fs.readFileSync('./views/deleteTemplate.hjs', 'utf-8');
 
 var compiledVerifyTemplate = Hogan.compile(verifyTemplate);
 var compiledWelcomeTemplate = Hogan.compile(welcomeTemplate);
 var compiledResetTemplate = Hogan.compile(resetTemplate);
+var compiledDeleteTemplate = Hogan.compile(deleteTemplate);
 
 exports.sendEmail = function (email, emailType, url, req, res) {
     
@@ -28,6 +30,7 @@ exports.sendEmail = function (email, emailType, url, req, res) {
         case "verify": { mailOptions = verifyMailOptions(email, url); break; }
         case "welcome": { mailOptions = welcomeMailOptions(email); break; }
         case "reset":{ mailOptions = resetMailOptions(email, url); break;}
+        case "delete":{ mailOptions = deleteMailOptions(email, url); break;}
         default: console.log("Wrong emailType for sendEmail function.");
     }
 
@@ -66,5 +69,14 @@ function resetMailOptions(email, url) {
         to: email,
         subject: 'MEAN Template Web - Reset Password',
         html: compiledResetTemplate.render({ email: email, url: url}) //using zurb.inc, templates, css inliner and hogan
+    };
+}
+
+function deleteMailOptions(email, url) {
+    return mailOptions = {
+        from: 'MEAN Template Web',
+        to: email,
+        subject: 'MEAN Template Web - Deleted Password',
+        html: compiledDeleteTemplate.render({ email: email}) //using zurb.inc, templates, css inliner and hogan
     };
 }
