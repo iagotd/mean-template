@@ -1,6 +1,7 @@
 var nodemailer = require('nodemailer');
 var Hogan = require('hogan.js')
 var fs = require('fs')
+var config = require('../config.json');
 
 var verifyTemplate = fs.readFileSync('./views/verifyTemplate.hjs', 'utf-8');
 var welcomeTemplate = fs.readFileSync('./views/welcomeTemplate.hjs', 'utf-8');
@@ -16,8 +17,8 @@ exports.sendEmail = function (email, emailType, url, req, res) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'email@gmail.com',
-            pass: 'allalala'
+            user: config.email.user,
+            pass: config.email.pass
         }
     });
 

@@ -3,3 +3,6 @@
 
 # certified and keys
 /security
+
+# config JSON file
+config.json
