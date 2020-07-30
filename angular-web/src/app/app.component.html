@@ -12,14 +12,14 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/profile" *ngIf="hasEnoughUserType(2)" routerLinkActive="active">Profile</a>
+      <li class="nav-item" *ngIf="hasEnoughUserType(2)">
+        <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/data" *ngIf="hasEnoughUserType(1)" routerLinkActive="active">Data</a>
+      <li class="nav-item" *ngIf="hasEnoughUserType(1)">
+        <a class="nav-link" routerLink="/data" routerLinkActive="active">Data</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/control" *ngIf="hasEnoughUserType(0)" routerLinkActive="active">Control</a>
+      <li class="nav-item" *ngIf="hasEnoughUserType(0)">
+        <a class="nav-link" routerLink="/control" routerLinkActive="active">Control</a>
       </li>
     </ul>
     <ul class="navbar-nav">
