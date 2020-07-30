@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'confirm', component: ConfirmComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'welcome', component: WelcomeComponent },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
 ];
 
 @NgModule({
