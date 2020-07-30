@@ -11,6 +11,7 @@ export class AuthService {
   private _loginUrl = "https://localhost:8443/api/login";
   private _confirmUrl = "https://localhost:8443/api/confirmation";
   private _verifyTokenUrl = "https://localhost:8443/api/verify-token";
+  private _deleteUserUrl = "https://localhost:8443/api/delete"
 
   constructor(private http: HttpClient,
               private _router: Router) { }
@@ -74,6 +75,10 @@ export class AuthService {
     localStorage.removeItem('token')
     localStorage.removeItem('userType')
     this._router.navigate(['/home'])
+  }
+
+  deleteUser(userData) {
+    return this.http.post<any>(this._deleteUserUrl, userData)
   }
 
   getToken() {
