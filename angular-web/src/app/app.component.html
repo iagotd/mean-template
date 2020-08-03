@@ -12,20 +12,20 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
       </li>
-      <li class="nav-item" *ngIf="hasEnoughUserType(2)">
+      <li class="nav-item" *ngIf="isUser()">
         <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
       </li>
-      <li class="nav-item" *ngIf="hasEnoughUserType(1)">
+      <li class="nav-item" *ngIf="isPremium()">
         <a class="nav-link" routerLink="/data" routerLinkActive="active">Data</a>
       </li>
-      <li class="nav-item" *ngIf="hasEnoughUserType(0)">
+      <li class="nav-item" *ngIf="isAdmin()">
         <a class="nav-link" routerLink="/control" routerLinkActive="active">Control</a>
       </li>
     </ul>
     <ul class="navbar-nav">
-        <a class="nav-link" *ngIf="!isLoggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
-        <a class="nav-link" *ngIf="!isLoggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
-        <a class="nav-link" style="cursor:pointer" *ngIf="isLoggedIn()" (click)="logoutUser()">Logout</a>
+        <a class="nav-link" *ngIf="!isUser()" routerLink="/login" routerLinkActive="active">Login</a>
+        <a class="nav-link" *ngIf="!isUser()" routerLink="/register" routerLinkActive="active">Register</a>
+        <a class="nav-link" style="cursor:pointer" *ngIf="isUser()" (click)="logoutUser()">Logout</a>
     </ul>
   </div>
 </nav>    

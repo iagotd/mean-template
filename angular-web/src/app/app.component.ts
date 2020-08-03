@@ -15,35 +15,25 @@ export class AppComponent {
     this._authService.logoutUser()
   }
 
-  isLoggedIn() {
-    return this._authService.userLoggedIn()
+  isUser() {
+    let userType = localStorage.getItem("userType");
+    if(userType == "user" || userType == "premium" || userType == "admin"){
+      return true;
+    } else return false;
   }
 
-  hasEnoughUserType(requiredUserType) {
+  isPremium() {
+    let userType = localStorage.getItem("userType");
+    if(userType == "premium" || userType == "admin"){
+      return true;
+    } else return false;
+  }
 
-    let userTypeNumber = 3;
-    if(!this.isLoggedIn()) return false;
-
-    switch(localStorage.getItem("userType")) {
-      case "user" : {
-        userTypeNumber = 2
-        break
-      }
-      case "premium" : {
-        userTypeNumber = 1
-        break
-      }
-      case "admin" : {
-        userTypeNumber = 0
-        break
-      }
-      default: userTypeNumber = 3
-    }
-    if(userTypeNumber > requiredUserType) {
-      return false
-    } else {
-      return true
-    }
+  isAdmin() {
+    let userType = localStorage.getItem("userType");
+    if(userType == "admin"){
+      return true;
+    } else return false;
   }
 
 }
