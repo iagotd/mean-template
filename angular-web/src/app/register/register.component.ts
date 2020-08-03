@@ -14,6 +14,12 @@ export class RegisterComponent implements OnInit {
               private _router: Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token') && localStorage.getItem("userType")) {
+      this._router.navigate(['/profile'])
+    } else {
+      if(localStorage.getItem('token')) localStorage.removeItem('token')
+      if(localStorage.getItem('userType')) localStorage.removeItem('userType')
+    }
   }
 
   registerUser() {

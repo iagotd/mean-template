@@ -14,11 +14,15 @@ export class LoginComponent implements OnInit {
               private _router: Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token') && localStorage.getItem("userType")) {
+      this._router.navigate(['/profile'])
+    } else {
+      if(localStorage.getItem('token')) localStorage.removeItem('token')
+      if(localStorage.getItem('userType')) localStorage.removeItem('userType')
+    }
   }
 
   loginUser() {
-    console.log("User: " + this.loginUserData.email);
-    console.log("Pass: " + this.loginUserData.password);
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         res => { 
