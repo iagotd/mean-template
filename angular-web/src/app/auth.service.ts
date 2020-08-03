@@ -34,41 +34,13 @@ export class AuthService {
         )
       ) : of(false)
   }
-
+  
   confirmUser(confirmData) {
     return this.http.post<any>(this._confirmUrl, confirmData)
   }
 
   loginUser(user) {
     return this.http.post<any>(this._loginUrl, user)
-  }
-
-  userLoggedIn() {
-    let userType = localStorage.getItem('userType')
-    if (userType === "user" || userType === "premium" || userType === "admin") {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  premiumLoggedIn() {
-    let userType = localStorage.getItem('userType')
-    if (userType === "premium" || userType === "admin") {
-      //ask server if it is OK
-      return true
-    } else {
-      return false
-    }
-  }
-
-  adminLoggedIn() {
-    let userType = localStorage.getItem('userType')
-    if (userType === "admin") {
-      return true
-    } else {
-      return false
-    }
   }
 
   logoutUser() {
