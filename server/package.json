@@ -17,7 +17,7 @@
     "fs": "0.0.1-security",
     "hogan.js": "^3.0.2",
     "https": "^1.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.9.25",
     "nodemailer": "^6.4.10"
   }
